@@ -5,7 +5,7 @@ This script can be safely used in a multi-odoo code base server because the defa
 
 <h2>Dependency Pandas </h2>
 
-<h3>Installation procedure 11</h3>
+<h3>Installation procedure 14</h3>
 
 sudo wget https://raw.githubusercontent.com/zubairahmedbgd/eagle_install_script/1450/fmcp1450-install.sh
 
