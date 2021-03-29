@@ -1,4 +1,4 @@
-OE_USER="cpamb1450"
+OE_USER="fmcp1450"
 OE_HOME="/$OE_USER"
 OE_HOME_EXT="/$OE_USER/${OE_USER}-server"
 INSTALL_WKHTMLTOPDF="True"
@@ -85,7 +85,7 @@ else
 fi
 
 echo -e "\n---- Create CPABOOKS system user ----"
-sudo adduser --system --quiet --shell=/bin/bash --home=$OE_HOME --gecos 'CPABOOKS1450' --group $OE_USER
+sudo adduser --system --quiet --shell=/bin/bash --home=$OE_HOME --gecos 'FMCP1450' --group $OE_USER
 #The user should also be added to the sudo'ers group.
 sudo adduser $OE_USER sudo
 
@@ -165,7 +165,7 @@ sudo su root -c "echo 'sudo -u $OE_USER $OE_HOME_EXT/odoo-bin --config=/etc/${OE
 sudo chmod 755 $OE_HOME_EXT/start.sh
 
 #--------------------------------------------------
-# Adding Eagle as a deamon (initscript)
+# Adding CPabooks as a deamon (initscript)
 #--------------------------------------------------
 
 echo -e "* Create init file"
@@ -180,7 +180,7 @@ cat <<EOF > ~/$OE_CONFIG
 # Default-Start: 2 3 4 5
 # Default-Stop: 0 1 6
 # Short-Description: Enterprise Business Applications
-# Description: Eagle Business Applications
+# Description: CPabooks Business Applications
 ### END INIT INFO
 PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin
 DAEMON=$OE_HOME_EXT/odoo-bin
@@ -326,7 +326,7 @@ fi
 # Enable ssl with certbot
 #--------------------------------------------------
 
-if [ $INSTALL_NGINX = "True" ] && [ $ENABLE_SSL = "True" ] && [ $ADMIN_EMAIL != "eagle@example.com" ]  && [ $WEBSITE_NAME != "_" ];then
+if [ $INSTALL_NGINX = "True" ] && [ $ENABLE_SSL = "True" ] && [ $ADMIN_EMAIL != "cpabooks1986@gmail.com" ]  && [ $WEBSITE_NAME != "_" ];then
   sudo add-apt-repository ppa:certbot/certbot -y && sudo apt-get update -y
   sudo apt-get install python3-certbot-nginx -y
   sudo certbot --nginx -d $WEBSITE_NAME --noninteractive --agree-tos --email $ADMIN_EMAIL --redirect
@@ -339,7 +339,7 @@ fi
 echo -e "* Starting Odoo Service"
 sudo su root -c "/etc/init.d/$OE_CONFIG start"
 echo "-----------------------------------------------------------"
-echo "Done! The Eagle server is up and running. Specifications:"
+echo "Done! The FMCPabooks server is up and running. Specifications:"
 echo "Port: $OE_PORT"
 echo "User service: $OE_USER"
 echo "Configuraton file location: /etc/${OE_CONFIG}.conf"
@@ -348,9 +348,9 @@ echo "User PostgreSQL: $OE_USER"
 echo "Code location: $OE_USER"
 echo "Addons folder: $OE_USER/$OE_CONFIG/odoo/addons/"
 echo "Password superadmin (database): $OE_SUPERADMIN"
-echo "Start Eagle service: sudo service $OE_CONFIG start"
-echo "Stop Eagle service: sudo service $OE_CONFIG stop"
-echo "Restart Eagle service: sudo service $OE_CONFIG restart"
+echo "Start FMCPabooks service: sudo service $OE_CONFIG start"
+echo "Stop FMCPabooks service: sudo service $OE_CONFIG stop"
+echo "Restart FMCPabooks service: sudo service $OE_CONFIG restart"
 if [ $INSTALL_NGINX = "True" ]; then
   echo "Nginx configuration file: /etc/nginx/sites-available/odoo"
 fi
