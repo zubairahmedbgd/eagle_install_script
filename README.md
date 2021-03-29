@@ -7,13 +7,13 @@ This script can be safely used in a multi-odoo code base server because the defa
 
 <h3>Installation procedure 14</h3>
 
-sudo wget https://raw.githubusercontent.com/zubairahmedbgd/eagle_install_script/1450/fmcp1450-install.sh
+sudo wget https://raw.githubusercontent.com/zubairahmedbgd/eagle_install_script/1449/cp1449-install.sh
 
 2. Make the script executable:
-sudo chmod +x fmcp1450-install.sh
+sudo chmod +x cp1449-install.sh
 
 3. Execute the script:
-sudo ./fmcp1450-install.sh
+sudo ./cp1449-install.sh
 
 
 
