@@ -1,11 +1,11 @@
-OE_USER="fmcp1450"
+OE_USER="cpent1471"
 OE_HOME="/$OE_USER"
 OE_HOME_EXT="/$OE_USER/${OE_USER}-server"
 INSTALL_WKHTMLTOPDF="True"
 
-OE_PORT="8050"
+OE_PORT="8071"
 # IMPORTANT! This script contains extra libraries that are specifically needed for Eagle 14.0
-OE_VERSION="14.0"
+OE_VERSION="master"
 
 IS_ENTERPRISE="False"
 
@@ -20,7 +20,7 @@ WEBSITE_NAME="_"
 LONGPOLLING_PORT="8072"
 ENABLE_SSL="False"
 # Provide Email to register ssl certificate
-ADMIN_EMAIL="cpabooks1986@gmail.com"
+ADMIN_EMAIL="rapidgrps@gmail.com"
 
 WKHTMLTOX_X64=https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.trusty_amd64.deb
 WKHTMLTOX_X32=https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.trusty_i386.deb
@@ -85,7 +85,7 @@ else
 fi
 
 echo -e "\n---- Create CPABOOKS system user ----"
-sudo adduser --system --quiet --shell=/bin/bash --home=$OE_HOME --gecos 'FMCP1450' --group $OE_USER
+sudo adduser --system --quiet --shell=/bin/bash --home=$OE_HOME --gecos 'CPENT1471' --group $OE_USER
 #The user should also be added to the sudo'ers group.
 sudo adduser $OE_USER sudo
 
@@ -97,7 +97,7 @@ sudo chown $OE_USER:$OE_USER /var/log/$OE_USER
 # Install CPABOOKS
 #--------------------------------------------------
 echo -e "\n==== Installing CPABOOKS Server ===="
-sudo git clone --depth 1 --branch $OE_VERSION https://www.github.com/odoo/odoo $OE_HOME_EXT/
+sudo git clone --depth 1 --branch $OE_VERSION https://github.com/ShaheenHossain/odoo14_ent_unlimit $OE_HOME_EXT/
 
 
 if [ $IS_ENTERPRISE = "True" ]; then
@@ -154,7 +154,7 @@ sudo su root -c "printf 'logfile = /var/log/${OE_USER}/${OE_CONFIG}.log\n' >> /e
 if [ $IS_ENTERPRISE = "True" ]; then
     sudo su root -c "printf 'addons_path=${OE_HOME}/enterprise/addons,${OE_HOME_EXT}/addons\n' >> /etc/${OE_CONFIG}.conf"
 else
-    sudo su root -c "printf 'addons_path=${OE_HOME_EXT}/addons,${OE_HOME}/custom/addons\n' >> /etc/${OE_CONFIG}.conf"
+    sudo su root -c "printf 'addons_path=${OE_HOME_EXT}/odoo/addons,${OE_HOME}/custom/addons\n' >> /etc/${OE_CONFIG}.conf"
 fi
 sudo chown $OE_USER:$OE_USER /etc/${OE_CONFIG}.conf
 sudo chmod 640 /etc/${OE_CONFIG}.conf
@@ -346,7 +346,7 @@ echo "Configuraton file location: /etc/${OE_CONFIG}.conf"
 echo "Logfile location: /var/log/$OE_USER"
 echo "User PostgreSQL: $OE_USER"
 echo "Code location: $OE_USER"
-echo "Addons folder: $OE_USER/$OE_CONFIG/addons/"
+echo "Addons folder: $OE_USER/$OE_CONFIG/odoo/addons/"
 echo "Password superadmin (database): $OE_SUPERADMIN"
 echo "Start FMCPabooks service: sudo service $OE_CONFIG start"
 echo "Stop FMCPabooks service: sudo service $OE_CONFIG stop"
