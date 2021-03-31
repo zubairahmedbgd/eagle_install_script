@@ -7,17 +7,17 @@ This script can be safely used in a multi-odoo code base server because the defa
 
 <h3>Installation procedure 14</h3>
 
-sudo wget https://raw.githubusercontent.com/zubairahmedbgd/eagle_install_script/1471/fmcp1471-install.sh
+sudo wget https://raw.githubusercontent.com/zubairahmedbgd/eagle_install_script/1471/cpent1471-install.sh
 
 2. Make the script executable:
-sudo chmod +x fmcp1471-install.sh
+sudo chmod +x cpent1471-install.sh
 
 3. Execute the script:
-sudo ./fmcp1471-install.sh
+sudo ./cpent1471-install.sh
 
 
 
-sudo /etc/init.d/fmcp1471-server stop
+sudo /etc/init.d/cpent1471-server stop
 
 
 ```
