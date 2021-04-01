@@ -7,17 +7,17 @@ This script can be safely used in a multi-odoo code base server because the defa
 
 <h3>Installation procedure 14</h3>
 
-sudo wget https://raw.githubusercontent.com/zubairahmedbgd/eagle_install_script/1472/cpent1472-install.sh
+sudo wget https://raw.githubusercontent.com/zubairahmedbgd/eagle_install_script/1473/cpent1473-install.sh
 
 2. Make the script executable:
-sudo chmod +x cpent1472-install.sh
+sudo chmod +x cpent1473-install.sh
 
 3. Execute the script:
-sudo ./cpent1472-install.sh
+sudo ./cpent1473-install.sh
 
 
 
-sudo /etc/init.d/cpent1472-server stop
+sudo /etc/init.d/cpent1473-server stop
 
 
 ```
