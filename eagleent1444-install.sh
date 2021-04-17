@@ -1,15 +1,15 @@
-OE_USER="cpent1473"
+OE_USER="eagleent1444"
 OE_HOME="/$OE_USER"
 OE_HOME_EXT="/$OE_USER/${OE_USER}-server"
 INSTALL_WKHTMLTOPDF="True"
 
-OE_PORT="8073"
+OE_PORT="8044"
 # IMPORTANT! This script contains extra libraries that are specifically needed for Eagle 14.0
 OE_VERSION="master"
 
 IS_ENTERPRISE="False"
 
-INSTALL_NGINX="False"
+INSTALL_NGINX="True"
 
 OE_SUPERADMIN="admin"
 # Set to "True" to generate a random password, "False" to use the variable in OE_SUPERADMIN
@@ -69,7 +69,7 @@ sudo npm install -g rtlcss
 # Install Wkhtmltopdf if needed
 #--------------------------------------------------
 if [ $INSTALL_WKHTMLTOPDF = "True" ]; then
-  echo -e "\n---- Install wkhtml and place shortcuts on correct place for cpabooks 14  ----"
+  echo -e "\n---- Install wkhtml and place shortcuts on correct place for odoo 14  ----"
   #pick up correct one from x64 & x32 versions:
   if [ "`getconf LONG_BIT`" == "64" ];then
       _url=$WKHTMLTOX_X64
@@ -84,8 +84,8 @@ else
   echo "Wkhtmltopdf isn't installed due to the choice of the user!"
 fi
 
-echo -e "\n---- Create CPABOOKS system user ----"
-sudo adduser --system --quiet --shell=/bin/bash --home=$OE_HOME --gecos 'CPENT1473' --group $OE_USER
+echo -e "\n---- Create ODOO system user ----"
+sudo adduser --system --quiet --shell=/bin/bash --home=$OE_HOME --gecos 'EAGLEENT1444' --group $OE_USER
 #The user should also be added to the sudo'ers group.
 sudo adduser $OE_USER sudo
 
@@ -94,10 +94,10 @@ sudo mkdir /var/log/$OE_USER
 sudo chown $OE_USER:$OE_USER /var/log/$OE_USER
 
 #--------------------------------------------------
-# Install CPABOOKS
+# Install ODOO
 #--------------------------------------------------
-echo -e "\n==== Installing CPABOOKS Server ===="
-sudo git clone --depth 1 --branch $OE_VERSION https://github.com/ShaheenHossain/odoo14_ent_unlimit $OE_HOME_EXT/
+echo -e "\n==== Installing ODOO Server ===="
+sudo git clone --depth 1 --branch $OE_VERSION https://github.com/ShaheenHossain/odoo14ent_homerotorres $OE_HOME_EXT/
 
 
 if [ $IS_ENTERPRISE = "True" ]; then
@@ -165,7 +165,7 @@ sudo su root -c "echo 'sudo -u $OE_USER $OE_HOME_EXT/odoo-bin --config=/etc/${OE
 sudo chmod 755 $OE_HOME_EXT/start.sh
 
 #--------------------------------------------------
-# Adding CPabooks as a deamon (initscript)
+# Adding ODOO as a deamon (initscript)
 #--------------------------------------------------
 
 echo -e "* Create init file"
@@ -180,7 +180,7 @@ cat <<EOF > ~/$OE_CONFIG
 # Default-Start: 2 3 4 5
 # Default-Stop: 0 1 6
 # Short-Description: Enterprise Business Applications
-# Description: CPabooks Business Applications
+# Description: ODOO Business Applications
 ### END INIT INFO
 PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin
 DAEMON=$OE_HOME_EXT/odoo-bin
@@ -240,7 +240,7 @@ sudo mv ~/$OE_CONFIG /etc/init.d/$OE_CONFIG
 sudo chmod 755 /etc/init.d/$OE_CONFIG
 sudo chown root: /etc/init.d/$OE_CONFIG
 
-echo -e "* Start CPABOOKS on Startup"
+echo -e "* Start ODOO on Startup"
 sudo update-rc.d $OE_CONFIG defaults
 
 #--------------------------------------------------
@@ -326,7 +326,7 @@ fi
 # Enable ssl with certbot
 #--------------------------------------------------
 
-if [ $INSTALL_NGINX = "True" ] && [ $ENABLE_SSL = "True" ] && [ $ADMIN_EMAIL != "cpabooks1986@gmail.com" ]  && [ $WEBSITE_NAME != "_" ];then
+if [ $INSTALL_NGINX = "True" ] && [ $ENABLE_SSL = "True" ] && [ $ADMIN_EMAIL != "rapidgrps@gmail.com" ]  && [ $WEBSITE_NAME != "_" ];then
   sudo add-apt-repository ppa:certbot/certbot -y && sudo apt-get update -y
   sudo apt-get install python3-certbot-nginx -y
   sudo certbot --nginx -d $WEBSITE_NAME --noninteractive --agree-tos --email $ADMIN_EMAIL --redirect
@@ -339,7 +339,7 @@ fi
 echo -e "* Starting Odoo Service"
 sudo su root -c "/etc/init.d/$OE_CONFIG start"
 echo "-----------------------------------------------------------"
-echo "Done! The FMCPabooks server is up and running. Specifications:"
+echo "Done! The odoo server is up and running. Specifications:"
 echo "Port: $OE_PORT"
 echo "User service: $OE_USER"
 echo "Configuraton file location: /etc/${OE_CONFIG}.conf"
@@ -348,9 +348,9 @@ echo "User PostgreSQL: $OE_USER"
 echo "Code location: $OE_USER"
 echo "Addons folder: $OE_USER/$OE_CONFIG/odoo/addons/"
 echo "Password superadmin (database): $OE_SUPERADMIN"
-echo "Start FMCPabooks service: sudo service $OE_CONFIG start"
-echo "Stop FMCPabooks service: sudo service $OE_CONFIG stop"
-echo "Restart FMCPabooks service: sudo service $OE_CONFIG restart"
+echo "Start Odoo service: sudo service $OE_CONFIG start"
+echo "Stop Odoo service: sudo service $OE_CONFIG stop"
+echo "Restart Odoo service: sudo service $OE_CONFIG restart"
 if [ $INSTALL_NGINX = "True" ]; then
   echo "Nginx configuration file: /etc/nginx/sites-available/odoo"
 fi
