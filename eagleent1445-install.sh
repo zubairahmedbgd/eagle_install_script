@@ -1,15 +1,15 @@
-OE_USER="eagleent1444"
+OE_USER="eagleent1445"
 OE_HOME="/$OE_USER"
 OE_HOME_EXT="/$OE_USER/${OE_USER}-server"
 INSTALL_WKHTMLTOPDF="True"
 
-OE_PORT="8044"
+OE_PORT="8045"
 # IMPORTANT! This script contains extra libraries that are specifically needed for Eagle 14.0
 OE_VERSION="master"
 
 IS_ENTERPRISE="False"
 
-INSTALL_NGINX="True"
+INSTALL_NGINX="False"
 
 OE_SUPERADMIN="admin"
 # Set to "True" to generate a random password, "False" to use the variable in OE_SUPERADMIN
@@ -85,7 +85,7 @@ else
 fi
 
 echo -e "\n---- Create ODOO system user ----"
-sudo adduser --system --quiet --shell=/bin/bash --home=$OE_HOME --gecos 'EAGLEENT1444' --group $OE_USER
+sudo adduser --system --quiet --shell=/bin/bash --home=$OE_HOME --gecos 'EAGLEENT1445' --group $OE_USER
 #The user should also be added to the sudo'ers group.
 sudo adduser $OE_USER sudo
 
