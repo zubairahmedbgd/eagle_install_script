@@ -3,21 +3,21 @@ but goes a bit further. This script will also give you the ability to define an 
 This script can be safely used in a multi-odoo code base server because the default Odoo port is changed BEFORE the Odoo is started.
 
 
-<h2>Dependency Pandas </h2>
+<h2>Dial code 44 for uk for homerotorres brazil 17/04/21 </h2>
 
 <h3>Installation procedure 14</h3>
 
-sudo wget https://raw.githubusercontent.com/zubairahmedbgd/eagle_install_script/1473/cpent1473-install.sh
+sudo wget https://raw.githubusercontent.com/zubairahmedbgd/eagle_install_script/1444/cpent1444-install.sh
 
 2. Make the script executable:
-sudo chmod +x cpent1473-install.sh
+sudo chmod +x cpent1444-install.sh
 
 3. Execute the script:
-sudo ./cpent1473-install.sh
+sudo ./cpent1444-install.sh
 
 
 
-sudo /etc/init.d/cpent1473-server stop
+sudo /etc/init.d/cpent1444-server stop
 
 
 ```
