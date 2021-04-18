@@ -1,9 +1,9 @@
-OE_USER="fmcp1450"
+OE_USER="fmcp1451"
 OE_HOME="/$OE_USER"
 OE_HOME_EXT="/$OE_USER/${OE_USER}-server"
 INSTALL_WKHTMLTOPDF="True"
 
-OE_PORT="8050"
+OE_PORT="8051"
 # IMPORTANT! This script contains extra libraries that are specifically needed for Eagle 14.0
 OE_VERSION="14.0"
 
@@ -85,7 +85,7 @@ else
 fi
 
 echo -e "\n---- Create CPABOOKS system user ----"
-sudo adduser --system --quiet --shell=/bin/bash --home=$OE_HOME --gecos 'FMCP1450' --group $OE_USER
+sudo adduser --system --quiet --shell=/bin/bash --home=$OE_HOME --gecos 'FMCP1451' --group $OE_USER
 #The user should also be added to the sudo'ers group.
 sudo adduser $OE_USER sudo
 
